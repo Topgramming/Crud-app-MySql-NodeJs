@@ -2,6 +2,8 @@ import './App.css';
 import { useState } from 'react';
 import Axios from 'axios';
 
+const ariaLabel = { 'aria-label': 'description' };
+
 function App() {
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
@@ -43,35 +45,35 @@ function App() {
   return (
     <div className="App">
       <div className="information">
-        <label>Name: </label>
+        <label>Name:</label>
         <input
           type="text"
           onChange={(event) => {
             setName(event.target.value);
           }}
         />
-        <label>Age: </label>
+        <label>Age:</label>
         <input
           type="number"
           onChange={(event) => {
             setAge(event.target.value);
           }}
         />
-        <label>Country: </label>
+        <label>Country:</label>
         <input
           type="text"
           onChange={(event) => {
             setCountry(event.target.value);
           }}
         />
-        <label>Position: </label>
+        <label>Position:</label>
         <input
           type="text"
           onChange={(event) => {
             setPosition(event.target.value);
           }}
         />
-        <label>Wage: </label>
+        <label>Wage (year):</label>
         <input
           type="number"
           onChange={(event) => {
@@ -81,17 +83,19 @@ function App() {
         <button onClick={addEmployee}>Add Employee</button>
       </div>
       <div className="employees">
-        <h1>Requesting from database part</h1>
         <button onClick={getEmployees}>Show Employees</button>
 
         {employeeList.map((val, key) => {
           return (
             <div className="employee">
-              <h3>Name: {val.name}</h3>
-              <h3>Age: {val.age}</h3>
-              <h3>Country: {val.country}</h3>
-              <h3>Position: {val.position}</h3>
-              <h3>Wage: {val.wage}</h3>
+              <div>
+                <h3>Name: {val.name}</h3>
+                <h3>Age: {val.age}</h3>
+                <h3>Country: {val.country}</h3>
+                <h3>Position: {val.position}</h3>
+                <h3>Wage: {val.wage}</h3>
+              </div>
+              <div></div>
             </div>
           );
         })}
